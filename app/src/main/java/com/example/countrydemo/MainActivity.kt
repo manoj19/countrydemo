@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
 
             CountrydemoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchView()
+                    SearchView(innerPaddingValues=innerPadding)
                 }
             }
         }

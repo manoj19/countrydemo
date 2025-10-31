@@ -64,4 +64,5 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.coil.kt.compose)
 }

@@ -2,4 +2,7 @@
     <string name="app_name">countrydemo</string>
     <string name="no_data_found">No data found!!</string>
     <string name="region">Region: %1$s</string>
+    <string name="country">Country</string>
+    <string name="country_detail">Country Detail</string>
+    <string name="subregion">Subregion: %1$s</string>
 </resources>
