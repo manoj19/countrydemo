@@ -14,6 +14,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        android.buildFeatures.buildConfig = true
+        buildConfigField("String", "BASEURL", "\"${property("base.url")}\"")
     }
 
     buildTypes {
@@ -49,6 +51,6 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp3)
     implementation(libs.okhttp3.loggingIntercepter)
-
+    implementation(project(":infra"))
 
 }

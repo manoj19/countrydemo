@@ -1,5 +1,6 @@
 package com.example.network.di
 
+import com.example.network.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun providesRetrofit(): ClientApi = Retrofit.Builder()
-        .baseUrl("https://restcountries.com/v3.1/")
+        .baseUrl(BuildConfig.BASEURL)
         .client(
             OkHttpClient.Builder().addInterceptor(
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
