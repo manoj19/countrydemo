@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -65,4 +66,6 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.coil.kt.compose)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation("io.mockk:mockk:1.14.6")
 }

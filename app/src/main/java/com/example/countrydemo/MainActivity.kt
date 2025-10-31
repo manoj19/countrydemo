@@ -6,11 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.countrydemo.screen.search.SearchView
+import com.example.countrydemo.screen.NavGraph
 import com.example.countrydemo.ui.theme.CountrydemoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,25 +20,9 @@ class MainActivity : ComponentActivity() {
 
             CountrydemoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchView(innerPaddingValues=innerPadding)
+                    NavGraph(innerPaddingValues=innerPadding)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    CountrydemoTheme {
-        Greeting("Android")
     }
 }

@@ -13,14 +13,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.countrydemo.R
 import com.example.countrydemo.component.AppBar
 import com.example.countrydemo.component.CircularProgressBar
@@ -31,12 +29,15 @@ import com.example.countrysdk.model.Country
 
 @Composable
 fun SearchView(
-    searchViewModel: SearchViewModel = hiltViewModel(), innerPaddingValues: PaddingValues
+    searchViewModel: SearchViewModel = hiltViewModel(),
+    innerPaddingValues: PaddingValues,
+    onNavigateToDetailsPage: (Country) -> Unit = {}
 ) {
     val uiState: ResultResponse<List<Country>> by searchViewModel.uiState.observeAsState(
         ResultResponse.Loading
     )
-    var text by remember { mutableStateOf("") }
+    val text by searchViewModel.searchQuery.collectAsStateWithLifecycle()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,8 +48,7 @@ fun SearchView(
         OutlinedTextField(
             value = text,
             onValueChange = {
-                text = it
-                searchViewModel.findCountryByName(it)
+                searchViewModel.searchQuery(it)
             },
             label = { Text(stringResource(R.string.search_by_country_name)) },
             modifier = Modifier
@@ -74,6 +74,7 @@ fun SearchView(
                     LazyColumn {
                         itemsIndexed(result.data) { index, item ->
                             CountryItem(country = item) {
+                                onNavigateToDetailsPage(item)
                             }
                         }
                     }
