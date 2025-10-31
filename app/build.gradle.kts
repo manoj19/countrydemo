@@ -68,4 +68,5 @@ dependencies {
     implementation(libs.coil.kt.compose)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation("io.mockk:mockk:1.14.6")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
 }
