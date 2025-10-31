@@ -35,4 +35,15 @@ class SearchViewModel @Inject constructor(
         }
     }
 
+    fun findCountryByName(search: String) {
+        _uiState.value = ResultResponse.Loading
+        viewModelScope.launch {
+            countryRepository.findCountry(search).onSuccess {
+                _uiState.value = ResultResponse.Success(it)
+            }.onFailure {
+                _uiState.value = ResultResponse.Error(it.message ?: "")
+            }
+        }
+    }
+
 }

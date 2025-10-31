@@ -4,16 +4,22 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.countrydemo.R
+import com.example.countrydemo.component.ImageItemDefaults.ImageSize
+import com.example.countrydemo.component.ImageItemDefaults.InnerSpacing
 import com.example.countrysdk.model.Country
 
 
@@ -28,7 +34,13 @@ fun CountryItem(
                 .fillMaxWidth()
                 .clickable(onClick = onClick)
         ) {
-
+            ImageComponent(
+                url = country.flagPic,
+                modifier = Modifier
+                    .size(ImageSize)
+                    .align(Alignment.CenterVertically)
+            )
+            Spacer(modifier = Modifier.width(InnerSpacing))
             Column(
                 verticalArrangement = Arrangement.Center
             ) {
@@ -61,4 +73,10 @@ fun Subtitle(subtitle: String) {
         color = MaterialTheme.colorScheme.onBackground.copy(alpha = .7f),
         modifier = Modifier.padding(bottom = 0.dp)
     )
+}
+
+
+private object ImageItemDefaults {
+    val ImageSize = 50.dp
+    val InnerSpacing = 12.dp
 }
