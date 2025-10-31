@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "countrydemo"
 include(":app")
 include(":network")
+include(":infra")
